@@ -1,15 +1,15 @@
-
 function getMaxProfit(stockPriceList) {
-  let { maxProfit, minPrice } = stockPriceList.reduce(
+    let { profit, buyPrice } = stockPriceList.reduce(
+    
+      ({ profit, buyPrice }, price) => ({
+        profit: Math.max(profit, price - buyPrice),
+        buyPrice: Math.min(buyPrice, price),
+      }),
+      { profit: 0, buyPrice: stockPriceList[0] }
+    );
+    
   
-    ({ maxProfit, minPrice }, price) => ({
-      maxProfit: Math.max(maxProfit, price - minPrice),
-      minPrice: Math.min(minPrice, price),
-    }),
-    { maxProfit: 0, minPrice: stockPriceList[0] }
-  );
-  
+    return profit;
+  }
 
-  return maxProfit;
-}
-
+console.log(getMaxProfit([1,3,4,2,6,1]));
