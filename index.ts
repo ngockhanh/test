@@ -11,14 +11,16 @@ export const getMaxProfit = (stockPriceList: number[]): Profit => {
   let minPrice: number = stockPriceList[0]; 
   let maxProfit: number = 0; 
   let buyIndex: number = 0; 
-  let sellIndex: number = 0; 
+  let sellIndex: number | null = null; 
   
   for (let i = 1; i < stockPriceList.length; i++) { 
     let currentPrice = stockPriceList[i]; 
     // Update the minimum price and buy index if the current price is lower
      if (currentPrice < minPrice) { 
       minPrice = currentPrice; 
-      buyIndex = i; 
+      buyIndex = i;
+      sellIndex= null;
+      maxProfit = 0;
     } else { 
       let potentialProfit = currentPrice - minPrice; 
       if (potentialProfit > maxProfit) { 
