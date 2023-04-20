@@ -1,4 +1,4 @@
-function getMaxProfit(stockPriceList) {
+export const getMaxProfit = (stockPriceList: number[]): number {
     let { profit, buyPrice } = stockPriceList.reduce(
     
       ({ profit, buyPrice }, price) => ({
@@ -11,5 +11,3 @@ function getMaxProfit(stockPriceList) {
   
     return profit;
   }
-
-console.log(getMaxProfit([1,3,4,2,6,1]));
